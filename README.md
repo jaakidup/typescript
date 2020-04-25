@@ -1,0 +1,3 @@
+# Typescript
+
+Diving into typescript
