@@ -13,21 +13,38 @@ function identities<T>(args: Array<T>): Array<T> {
 
 interface Person {
     name: string
-    sample(name: string): any
-}
-let person: Person = {
-    name: "Jaaki",
-    sample: (name: string) => {
-        console.log("Howdy ", name)
-    }
+    greet(name: string): any
 }
 
+let jaaki: Person = {
+    name: "Jaaki",
+    greet: (name: string) => name
+}
+
+let joe: Person = {
+    name: "Joe",
+    greet: (name: string) => name
+}
+
+
+
+
+
+
 // this is one way of calling the generic function.
-let firstResult = identity(person)
-firstResult.sample("jo")
+let firstResult = identity(jaaki)
+console.log(firstResult.greet("joe"))
 // this is the second way of calling a generic function with type info explicitly used
-let secondResult = identity<Person>(person)
-secondResult.name = "Joe"
-secondResult.sample("Chicka")
+let secondResult = identity<Person>(joe)
+console.log(secondResult.greet("Jaaki"))
+
+
+
+let ids = identities([jaaki, joe])
+ids.forEach((person) => {
+    console.log(person.greet(person.name))
+})
+console.log(ids)
+
 
 
